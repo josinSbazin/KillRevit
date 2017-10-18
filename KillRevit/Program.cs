@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace KillRevit
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private const int DelayToEnd = 1000;
+
+        private static void Main()
         {
             try
             {
@@ -27,9 +30,7 @@ namespace KillRevit
                         Console.WriteLine($"Warning! {process.ProcessName} ({process.Id}) - kill attempt failed!");
                     }
                 }
-                Console.WriteLine();
-                Console.WriteLine("Для завершения нажмите любую клавишу");
-                Console.ReadKey();
+                Thread.Sleep(DelayToEnd);
             }
             catch (Exception ex)
             {
